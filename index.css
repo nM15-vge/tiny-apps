@@ -1,0 +1,17 @@
+#body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas:
+    header
+    body
+    ;
+}
+
+#nav {
+    grid-area: header;
+}
+
+#information {
+    grid-area: body;
+}
