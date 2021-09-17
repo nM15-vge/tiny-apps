@@ -72,16 +72,27 @@ let links = document.getElementsByClassName("links");
     }
 })();
 
+const leftButton = document.getElementById("left-button");
+const rightButton = document.getElementById("right-button");
+
 const toggleDark = () => {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-    appName.style.color = "#F6F6F6"
+    document.body.style.backgroundColor = "#000000";
+    document.body.style.color = "#F8F8FF";
+    appName.style.color = "#d50000";
+    leftButton.style.color = "#FFFFFF";
+    leftButton.style.backgroundColor = "#000000";
+    rightButton.style.color = "#FFFFFF";
+    rightButton.style.backgroundColor = "#000000";
 };
 
 const toggleLight = () => {
-    document.body.style.color = "black";
-    document.body.style.backgroundColor = "white";
-    appName.style.color = "#F6F6F6"
+    document.body.style.color = "#62757f";
+    document.body.style.backgroundColor = "#FFFFFF";
+    appName.style.color = "#96fa5a";
+    leftButton.style.backgroundColor = "#FFFFFF";
+    leftButton.style.color = "#000000";
+    rightButton.style.backgroundColor = "#FFFFFF";
+    rightButton.style.color = "#000000";
 };
 
 toggleLight();
@@ -96,8 +107,8 @@ const rotateLeft = () => {
     appList.currentNode.value === "grave" ? toggleDark() : toggleLight();
 };
 
-document.getElementById("right-button").onclick = rotateRight;
-document.getElementById("left-button").onclick = rotateLeft;
+rightButton.onclick = rotateRight;
+leftButton.onclick = rotateLeft;
 document.getElementById("navbar").addEventListener("click", e => {
     if(e.target.tagName === "SPAN") {
         let text = e.target.innerText.toLowerCase();
