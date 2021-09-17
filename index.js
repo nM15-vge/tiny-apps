@@ -37,13 +37,13 @@ class CircularDoublyLinkList {
         let oldCurrent = this.currentNode;
         this.currentNode = oldCurrent.next;
         return this.currentNode.value;
-    }
+    };
 
     previous() {
         let oldCurrent = this.currentNode;
         this.currentNode = oldCurrent.previous;
         return this.currentNode.value;
-    }
+    };
 }
 
 const appList = new CircularDoublyLinkList();
