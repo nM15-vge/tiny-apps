@@ -44,6 +44,15 @@ class CircularDoublyLinkList {
         this.currentNode = oldCurrent.previous;
         return this.currentNode.value;
     };
+
+    search (text) {
+        let currentText = this.currentNode.value;
+        while(text !== currentText){
+            if(this.currentNode.value === text) return;
+            let oldCurrent = this.currentNode;
+            this.currentNode = oldCurrent.next;
+        }
+    }
 }
 
 const appList = new CircularDoublyLinkList();
@@ -54,20 +63,34 @@ const appList = new CircularDoublyLinkList();
 let appName = document.getElementById("app-name");
 appName.innerHTML = appList.head.value;
 
+
+let links = document.getElementsByClassName("links");
+
+(() => {
+    for(const link of links){
+        link.addEventListener("click", e => e.preventDefault())
+    }
+})();
+
 const toggleDark = () => {
     document.body.style.backgroundColor = "black";
     document.body.style.color = "white";
     appName.style.color = "#F6F6F6"
 };
+
 const toggleLight = () => {
     document.body.style.color = "black";
     document.body.style.backgroundColor = "white";
     appName.style.color = "#F6F6F6"
 };
+
+toggleLight();
+
 const rotateRight = () => {
     appName.innerHTML = appList.next();
     appList.currentNode.value === "grave" ? toggleDark() : toggleLight();
 };
+
 const rotateLeft = () => {
     appName.innerHTML = appList.previous();
     appList.currentNode.value === "grave" ? toggleDark() : toggleLight();
@@ -75,3 +98,11 @@ const rotateLeft = () => {
 
 document.getElementById("right-button").onclick = rotateRight;
 document.getElementById("left-button").onclick = rotateLeft;
+document.getElementById("navbar").addEventListener("click", e => {
+    if(e.target.tagName === "SPAN") {
+        let text = e.target.innerText.toLowerCase();
+        appList.search(text);
+        appName.innerHTML = appList.currentNode.value;
+        appList.currentNode.value === "grave" ? toggleDark() : toggleLight()
+    }
+});
