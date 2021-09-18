@@ -60,17 +60,33 @@ a {
 }
 
 #left-button, #right-button {
-  background-color: #FFFFFF;
   border: none;
-  color: #000000;
-  width: 50px;
-  height: 50px;
+  color: #FFFFFF;
   text-align: center;
   font-size: 25px;
-  border-radius: 50%;
   box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
 }
 
 #footer {
     grid-area: footer;
+}
+
+.circle {
+    height: 50px;
+    width: 50px;
+    background: linear-gradient( #A0A0A1 0%,  #CCCCCC 10%, #F5F5F6 50%, #FFFFFF 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.inner-circle {
+    height: 40px;
+    width: 40px;
+    background: linear-gradient(#FFFFFF 0%, #CCCCCC 60%, #A0A0A1 100%);
+    border-radius: 50%;
+    /* filter: blur(18px); */
+    position: absolute;
 }
