@@ -10,6 +10,7 @@ html, body {
     height: 100%;
     border: 0;
     padding: 0;
+    letter-spacing: 0.2rem;
 }
 
 a {
@@ -68,6 +69,18 @@ a {
 
 #footer {
     grid-area: footer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+
+#footer .copyright {
+    letter-spacing: 0.2rem;
+    font-size: 0.6rem;
+    opacity: 0.75;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
 }
 
 .circle {
@@ -85,6 +98,7 @@ a {
     border-radius: 50%;
     /* filter: blur(18px); */
 }
+
 .circle-light {
     background: linear-gradient( #A0A0A1 0%,  #CCCCCC 10%, #F5F5F6 50%, #FFFFFF 100%);
     color: #000000
@@ -93,6 +107,7 @@ a {
 .inner-circle-light {
     background: linear-gradient(#FFFFFF 0%, #CCCCCC 60%, #A0A0A1 100%);
 }
+
 .circle-dark {
     background: linear-gradient(#F5F5F6 0%,  #919192 10%, #2C2C2C 50%, #000000 100%);
     color: #FFFFFF;
@@ -110,4 +125,27 @@ a {
 .light {
     background-color: #FFFFFF;
     color: #62757f;
+}
+
+ul.icons li a {
+    display: inline-block;
+    height: 2.25rem;
+    line-height: 2.25rem;
+    text-align: center;
+    width: 2.25rem;
+}
+
+ul.icons {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.icons li {
+    display: inline-block;
+    padding: 0 0.75em 0 0;
+}
+
+.icon > .label {
+    display: none;
 }
