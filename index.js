@@ -74,25 +74,36 @@ let links = document.getElementsByClassName("links");
 
 const leftButton = document.getElementById("left-button");
 const rightButton = document.getElementById("right-button");
+const body = document.body;
+const innerCircles = document.getElementsByClassName("inner-circle");
+const buttons = document.getElementsByClassName("circle");
 
 const toggleDark = () => {
-    document.body.style.backgroundColor = "#000000";
-    document.body.style.color = "#F8F8FF";
+    body.classList.remove("light");
+    body.classList.add("dark");
     appName.style.color = "#d50000";
-    leftButton.style.color = "#FFFFFF";
-    leftButton.style.backgroundColor = "#000000";
-    rightButton.style.color = "#FFFFFF";
-    rightButton.style.backgroundColor = "#000000";
+    for(const button of buttons){
+        button.classList.remove("circle-light");
+        button.classList.add("circle-dark");
+    }
+    for(const innerCircle of innerCircles){
+        innerCircle.classList.remove("inner-circle-light");
+        innerCircle.classList.add("inner-circle-dark");
+    }
 };
 
 const toggleLight = () => {
-    document.body.style.color = "#62757f";
-    document.body.style.backgroundColor = "#FFFFFF";
+    body.classList.remove("dark");
+    body.classList.add("light");
     appName.style.color = "#96fa5a";
-    leftButton.style.backgroundColor = "#FFFFFF";
-    leftButton.style.color = "#000000";
-    rightButton.style.backgroundColor = "#FFFFFF";
-    rightButton.style.color = "#000000";
+    for(const button of buttons){
+        button.classList.remove("circle-dark");
+        button.classList.add("circle-light");
+    }
+    for(const innerCircle of innerCircles){
+        innerCircle.classList.remove("inner-circle-dark");
+        innerCircle.classList.add("inner-circle-light");
+    }
 };
 
 toggleLight();
