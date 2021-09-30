@@ -1,46 +1,82 @@
 // initial state for our gaem;
-px = py = 10;
-gs = ts = 20;
-ax = ay = 15;
-xv = yv = 0;
+posX = posY = 10;
+appleX = appleY = 15;
+gridSize = 20;
+tableSize = 25;
 
+// values manipulated by d-pad;
+directionX = directionY = 0;
+
+// our snake;
 body = [];
-segments = [];
+segments = 5;
 
 // logic for game;
 const game = () => {
-    px += xv;
-    py += yv;
+    posX += directionX;
+    posY += directionY;
 
     ctx.fillStyle="#000000";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#2ED9EB";
-}
+
+    if(posX < 0) posX = tableSize - 1;
+    if(posX > tableSize - 1) posX = 0;
+    if(posY < 0) posY = tableSize - 1;
+    if(posY > tableSize - 1) posY = 0;
+
+    for(let i = 0; i < body.length; i++){
+        ctx.fillRect(body[i].x * gridSize, body[i].y * gridSize, gridSize - 2, gridSize - 2);
+        if(body[i].x === posX && body[i].y === posY){
+            segments = 5;
+        }
+    };
+
+    body.push({x: posX, y: posY});
+
+    while(body.length > segments){
+        body.shift();
+    };
+
+    if(appleX === posX && appleY === posY){
+        segments ++;
+        appleX = Math.floor(Math.random() * tableSize);
+        appleY = Math.floor(Math.random() * tableSize);
+    };
+
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(appleX * gridSize, appleY * gridSize, gridSize - 2, gridSize - 2);
+
+};
 
 // control our D-pad;
 const keydown = e => {
     switch(e.keycode) {
         case(65):
-            console.log("left")
+            directionX = -1;
+            directionY = 0;
             break;
         case(87):
-            console.log("up");
+            directionX = 0;
+            directionY = -1;
             break;
         case(68):
-            console.log("right");
+            directionX = 1;
+            directionX = 0;
             break;
         case(83):
-            console.log("down");
+            directionX = 0;
+            directionY = 1;
             break;
-    }
-}
+    };
+};
 
 const init = () => {
-    let canv = document.getElementById("game");
-    let ctx = canv.getContext("2d");
+    canvas = document.getElementById("game");
+    ctx = canvas.getContext("2d");
     document.addEventListener("keydown", keydown)
-    setInterval(game, 1000/15);
-}
+    setInterval(game, 60);
+};
 
 // window.onload = init();
-document.addEventListener("DOMContentLoaded", init)
+document.addEventListener("DOMContentLoaded", init);

@@ -10,4 +10,5 @@ html, body {
 
 canvas {
     border: 5px solid;
+    border-color: #2ed9eb;
 }
