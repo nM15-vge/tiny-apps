@@ -9,7 +9,7 @@ directionX = directionY = 0;
 
 // our snake;
 body = [];
-segments = 5;
+segments = 10;
 
 // logic for game;
 const game = () => {
@@ -20,16 +20,29 @@ const game = () => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#2ED9EB";
 
-    if(posX < 0) posX = tableSize - 1;
-    if(posX > tableSize - 1) posX = 0;
-    if(posY < 0) posY = tableSize - 1;
-    if(posY > tableSize - 1) posY = 0;
+    if(posX < 0) {
+        posX = tableSize - 1;
+    };
+    if(posX > tableSize - 1) {
+        posX = 0;
+    };
+    if(posY < 0) {
+        posY = tableSize - 1;
+    };
+    if(posY > tableSize - 1) {
+        posY = 0;
+    };
 
     for(let i = 0; i < body.length; i++){
+        ctx.beginPath();
+        ctx.moveTo(body[i].x * gridSize, body[i].y * gridSize);
+        ctx.arc(body[i].x * gridSize, body[i].y * gridSize, gridSize - 2, 0, Math.PI * 2, true);
+        ctx.fill();
+        ctx.stroke();
         ctx.fillRect(body[i].x * gridSize, body[i].y * gridSize, gridSize - 2, gridSize - 2);
         if(body[i].x === posX && body[i].y === posY){
-            segments = 5;
-        }
+            segments = 10;
+        };
     };
 
     body.push({x: posX, y: posY});
@@ -50,8 +63,8 @@ const game = () => {
 };
 
 // control our D-pad;
-const keydown = e => {
-    switch(e.keycode) {
+const keyDown = e => {
+    switch(e.keyCode) {
         case(65):
             directionX = -1;
             directionY = 0;
@@ -62,7 +75,7 @@ const keydown = e => {
             break;
         case(68):
             directionX = 1;
-            directionX = 0;
+            directionY = 0;
             break;
         case(83):
             directionX = 0;
@@ -74,8 +87,8 @@ const keydown = e => {
 const init = () => {
     canvas = document.getElementById("game");
     ctx = canvas.getContext("2d");
-    document.addEventListener("keydown", keydown)
-    setInterval(game, 60);
+    document.addEventListener("keydown", keyDown)
+    setInterval(game, 100);
 };
 
 // window.onload = init();
