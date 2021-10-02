@@ -35,11 +35,11 @@ const game = () => {
 
     for(let i = 0; i < body.length; i++){
         ctx.beginPath();
-        ctx.moveTo(body[i].x * gridSize, body[i].y * gridSize);
-        ctx.arc(body[i].x * gridSize, body[i].y * gridSize, gridSize - 2, 0, Math.PI * 2, true);
+        // ctx.moveTo(body[i].x * gridSize, body[i].y * gridSize);
+        ctx.arc(body[i].x * gridSize, body[i].y * gridSize, (gridSize - 2)/2, 0, Math.PI * 2, true);
         ctx.fill();
         ctx.stroke();
-        ctx.fillRect(body[i].x * gridSize, body[i].y * gridSize, gridSize - 2, gridSize - 2);
+        // ctx.fillRect(body[i].x * gridSize, body[i].y * gridSize, gridSize - 2, gridSize - 2);
         if(body[i].x === posX && body[i].y === posY){
             segments = 10;
         };
@@ -58,7 +58,9 @@ const game = () => {
     };
 
     ctx.fillStyle = "#FF0000";
-    ctx.fillRect(appleX * gridSize, appleY * gridSize, gridSize - 2, gridSize - 2);
+    ctx.beginPath();
+    ctx.arc(appleX * gridSize, appleY * gridSize, (gridSize - 2)/2, 0, Math.PI * 2, true);
+    ctx.fill();
 
 };
 
