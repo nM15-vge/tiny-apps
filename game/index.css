@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+* {
+    font-family: 'Permanent Marker', cursive;
+}
+
 html, body {
-    font-family: "Audiowide", cursive;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
