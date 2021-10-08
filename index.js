@@ -1,4 +1,4 @@
-const apps = ["app", "blog", "shop", "note", "game", "grave"];
+const apps = ["app", "art", "blog", "shop", "note", "game", "grave"];
 class Node {
     constructor(value) {
         this.value = value;
