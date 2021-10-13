@@ -77,6 +77,8 @@ const rightButton = document.getElementById("right-button");
 const body = document.body;
 const innerCircles = document.getElementsByClassName("inner-circle");
 const buttons = document.getElementsByClassName("circle");
+const appTitle = document.getElementById("app-name");
+const display = document.getElementById("display");
 
 const toggleDark = () => {
     body.classList.remove("light");
@@ -108,18 +110,61 @@ const toggleLight = () => {
 
 toggleLight();
 
+const cleanUp = () => {
+    display.body.style.backgroundColor = "#FFFFFF";
+    display.body.style.color = "#000000";
+    display.innerHTML = ""
+}
+
+const render = () => {
+    cleanUp();
+    switch(appList.currentNode.value){
+        case("game"):
+            return generateGame();
+        case("art"):
+            return generateArt();
+        default:
+            return;
+    }
+};
+
+const keyDown = e => {
+    console.log(e);
+    switch(e.keyCode) {
+        case(37):
+            rotateLeft();
+            break;
+        case(39):
+            rotateRight();
+            break;
+        default:
+            return;
+    };
+};
+
+const setDisplay = () => {
+    appTitle.innerHTML = appList.currentNode.value;
+    render();
+}
+
 const rotateRight = () => {
     appName.innerHTML = appList.next();
     appList.currentNode.value === "grave" ? toggleDark() : toggleLight();
+    setDisplay();
 };
 
 const rotateLeft = () => {
     appName.innerHTML = appList.previous();
     appList.currentNode.value === "grave" ? toggleDark() : toggleLight();
+    setDisplay();
 };
+
 
 rightButton.onclick = rotateRight;
 leftButton.onclick = rotateLeft;
+
+document.addEventListener("keydown", keyDown);
+
 document.getElementById("navbar").addEventListener("click", e => {
     if(e.target.tagName === "SPAN") {
         let text = e.target.innerText.toLowerCase();

@@ -15,6 +15,7 @@ html, body {
 
 canvas {
     background-color: #290916;
+    box-sizing: border-box;
     border: 4px solid;
     border-color: #d4af37;
 }
