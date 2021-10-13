@@ -77,7 +77,6 @@ const rightButton = document.getElementById("right-button");
 const body = document.body;
 const innerCircles = document.getElementsByClassName("inner-circle");
 const buttons = document.getElementsByClassName("circle");
-const appTitle = document.getElementById("app-name");
 const display = document.getElementById("display");
 
 const toggleDark = () => {
@@ -122,6 +121,7 @@ const render = appName => {
         case("game"):
             return generateGame();
         case("art"):
+            console.log(appName)
             return generateArt();
         default:
             return;
@@ -143,7 +143,6 @@ const keyDown = e => {
 
 const setDisplay = () => {
     const selectedApp = appList.currentNode.value;
-    appTitle.innerHTML = selectedApp;
     render(selectedApp);
 }
 
@@ -172,4 +171,9 @@ document.getElementById("navbar").addEventListener("click", e => {
         appName.innerHTML = appList.currentNode.value;
         appList.currentNode.value === "grave" ? toggleDark() : toggleLight()
     }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    setDisplay();
 });

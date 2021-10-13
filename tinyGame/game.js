@@ -1,4 +1,14 @@
 const generateGame = () => {
+    canvas = document.createElement('canvas');
+    canvas.id = 'game';
+    canvas.width = '500';
+    canvas.height = '500';
+    canvas.style.border = '4px solid #FF66FF'
+
+    const display = document.getElementById('display');
+    display.append(canvas)
+
+    ctx = canvas.getContext('2d');
     //initial state for game;
     posX = posY = 10;
     appleX = appleY = 15;
@@ -136,12 +146,7 @@ const generateGame = () => {
         };
     };
 
-    const init = () => {
-        canvas = document.getElementById("game");
-        ctx = canvas.getContext("2d");
-        document.addEventListener("keydown", keyDown)
-        setInterval(game, 150);
-    };
 
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("keydown", keyDown)
+    setInterval(game, 150);
 };
