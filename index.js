@@ -170,6 +170,7 @@ document.getElementById("navbar").addEventListener("click", e => {
         appList.search(text);
         appName.innerHTML = appList.currentNode.value;
         appList.currentNode.value === "grave" ? toggleDark() : toggleLight()
+        setDisplay();
     }
 });
 
