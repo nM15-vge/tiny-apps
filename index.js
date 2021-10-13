@@ -111,14 +111,14 @@ const toggleLight = () => {
 toggleLight();
 
 const cleanUp = () => {
-    display.body.style.backgroundColor = "#FFFFFF";
-    display.body.style.color = "#000000";
-    display.innerHTML = ""
-}
+    document.body.style.backgroundColor = "#FFFFFF";
+    document.body.style.color = "#000000";
+    display.innerHTML = "";
+};
 
-const render = () => {
+const render = appName => {
     cleanUp();
-    switch(appList.currentNode.value){
+    switch(appName){
         case("game"):
             return generateGame();
         case("art"):
@@ -129,7 +129,6 @@ const render = () => {
 };
 
 const keyDown = e => {
-    console.log(e);
     switch(e.keyCode) {
         case(37):
             rotateLeft();
@@ -143,8 +142,9 @@ const keyDown = e => {
 };
 
 const setDisplay = () => {
-    appTitle.innerHTML = appList.currentNode.value;
-    render();
+    const selectedApp = appList.currentNode.value;
+    appTitle.innerHTML = selectedApp;
+    render(selectedApp);
 }
 
 const rotateRight = () => {
