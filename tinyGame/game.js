@@ -3,7 +3,7 @@ const generateGame = () => {
     canvas.id = 'game';
     canvas.width = '500';
     canvas.height = '500';
-    canvas.style.border = '4px solid #FF66FF'
+    canvas.style.border = '4px solid #51e6f7'
 
     const display = document.getElementById('display');
     display.append(canvas)
@@ -19,7 +19,7 @@ const generateGame = () => {
     directionX = directionY = 0;
 
     //snake;
-    body = [];
+    let body = [];
     segments = 5;
 
     //logic for game;
