@@ -19,7 +19,7 @@ const generateGame = () => {
     directionX = directionY = 0;
 
     //snake;
-    let body = [];
+    snakeBody = [];
     segments = 5;
 
     //logic for game;
@@ -46,10 +46,10 @@ const generateGame = () => {
             posY = 0;
         };
 
-        for(let i = 0; i < body.length; i++){
+        for(let i = 0; i < snakeBody.length; i++){
 
-            const currX = body[i].x;
-            const currY = body[i].y;
+            const currX = snakeBody[i].x;
+            const currY = snakeBody[i].y;
             const x = currX * gridSize + radius;
             const y = currY * gridSize + radius;
 
@@ -67,7 +67,7 @@ const generateGame = () => {
                 ctx.fillStyle = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
             };
 
-            if(i === body.length - 1) {
+            if(i === snakeBody.length - 1) {
                 ctx.fillStyle = "#8fb54a"
                 ctx.beginPath();
                 ctx.arc(x, y, radius, 0, circle, true);
@@ -102,10 +102,10 @@ const generateGame = () => {
             };
         };
 
-        body.push({x: posX, y: posY});
+        snakeBody.push({x: posX, y: posY});
 
-        while(body.length > segments){
-            body.shift();
+        while(snakeBody.length > segments){
+            snakeBody.shift();
         };
 
         if(appleX === posX && appleY === posY){
@@ -147,6 +147,6 @@ const generateGame = () => {
     };
 
 
-    document.addEventListener("keydown", keyDown)
+    document.addEventListener("keydown", keyDown);
     setInterval(game, 150);
 };
