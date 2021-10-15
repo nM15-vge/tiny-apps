@@ -6,13 +6,15 @@ const appList = new CircularDoublyLinkList();
 
 
 let appName = document.getElementById("app-name");
+
+// initial display;
 appName.innerHTML = appList.head.value;
 
 
-let links = document.getElementsByClassName("links");
+let navLinks = document.getElementsByClassName("nav-links");
 
 (() => {
-    for(const link of links){
+    for(const link of navLinks){
         link.addEventListener("click", e => e.preventDefault())
     }
 })();
@@ -52,11 +54,10 @@ const toggleLight = () => {
     }
 };
 
+// init light theme;
 toggleLight();
 
 const cleanUp = () => {
-    document.body.style.backgroundColor = "#FFFFFF";
-    document.body.style.color = "#000000";
     display.innerHTML = "";
 };
 
@@ -117,9 +118,4 @@ document.getElementById("navbar").addEventListener("click", e => {
         appList.currentNode.value === "grave" ? toggleDark() : toggleLight()
         setDisplay();
     }
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    setDisplay();
 });
