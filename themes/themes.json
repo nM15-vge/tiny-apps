@@ -1,0 +1,29 @@
+{
+    "light": {
+        "backgroundColor": "#000000"
+    },
+    "dark": {
+        "backgroundColor": "#FFFFFF"
+    },
+    "app": {
+        "backgroundColor": "#000000"
+    },
+    "art": {
+        "backgroundColo": "#000000"
+    },
+    "blog": {
+        "backgroundColor": "#000000"
+    },
+    "shop": {
+        "backgroundColor": "#000000"
+    },
+    "note": {
+        "backgroundColor": "#000000"
+    },
+    "game": {
+        "backgroundColor": "#000000"
+    },
+    "grave": {
+        "backgroundColor": "#000000"
+    }
+}
