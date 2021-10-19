@@ -67,8 +67,9 @@ const render = appName => {
         case("game"):
             return generateGame();
         case("art"):
-            console.log(appName)
             return generateArt();
+        case("note"):
+            return generateNotes();
         default:
             return;
     }
