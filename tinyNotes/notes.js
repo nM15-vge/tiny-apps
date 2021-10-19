@@ -1,4 +1,5 @@
-const notes = new CircularDoublyLinkList();
+// const notes = new CircularDoublyLinkList();
+let notes = [];
 
 const generateNotes = () => {
     const localStorage = window.localStorage;
@@ -33,7 +34,8 @@ const generateNotes = () => {
             text: text,
             id: Date.now(),
         };
-        notes.append(note);
+        // notes.append(note);
+        notes.push(note);
         localStorage.setItem("notes", JSON.stringify(notes));
         let formattedNote = formatNote(note);
         notebook.append(formattedNote);
