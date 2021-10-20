@@ -1,4 +1,4 @@
-const apps = ["app", "art", "blog", "shop", "note", "game", "grave"];
+const apps = ["app", "art", "blog", "game", "grave", "note", "shop"];
 
 const appList = new CircularDoublyLinkList();
 
@@ -70,6 +70,8 @@ const render = appName => {
             return generateArt();
         case("note"):
             return generateNotes();
+        case("math"):
+            return generateMath();
         default:
             return;
     }
